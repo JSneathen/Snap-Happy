@@ -108,3 +108,86 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLogin();
   setupGallery();
 });
+
+// --- Proofing Portal Logic ---
+const proofs = [
+  'https://picsum.photos/id/1015/400/300',
+  'https://picsum.photos/id/1016/400/300',
+  'https://picsum.photos/id/1025/400/300',
+  'https://picsum.photos/id/1035/400/300',
+  'https://picsum.photos/id/1045/400/300'
+];
+
+let selectedProof = null;
+
+function loadProofs() {
+  const pendingGrid = document.getElementById('pendingGrid');
+  if (pendingGrid) {
+    proofs.forEach((src, index) => {
+      const card = createProofCard(src, index);
+      pendingGrid.appendChild(card);
+    });
+  }
+}
+
+function createProofCard(src, index) {
+  const card = document.createElement('div');
+  card.className = 'proof-card';
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = "Proof Image";
+
+  const status = document.createElement('p');
+  status.className = 'proof-status';
+  status.innerText = 'Status: Pending';
+
+  const approveBtn = document.createElement('button');
+  approveBtn.innerText = 'Approve';
+  approveBtn.onclick = () => approveProof(card);
+
+  const reviseBtn = document.createElement('button');
+  reviseBtn.innerText = 'Request Revision';
+  reviseBtn.onclick = () => openRevisionPopup(card);
+
+  card.appendChild(img);
+  card.appendChild(status);
+  card.appendChild(approveBtn);
+  card.appendChild(reviseBtn);
+
+  return card;
+}
+
+function approveProof(card) {
+  card.querySelector('.proof-status').innerText = 'Status: Approved';
+  document.getElementById('approvedGrid').appendChild(card);
+}
+
+function openRevisionPopup(card) {
+  selectedProof = card;
+  document.getElementById('revisionPopup').style.display = 'block';
+}
+
+function submitRevision() {
+  const text = document.getElementById('revisionText').value;
+  if (text.trim() !== '') {
+    selectedProof.querySelector('.proof-status').innerText = 'Status: Revision Requested';
+    document.getElementById('revisionGrid').appendChild(selectedProof);
+    closeRevisionPopup();
+    alert('Revision submitted! 📝');
+  } else {
+    alert('Please enter a description before submitting.');
+  }
+}
+
+function closeRevisionPopup() {
+  document.getElementById('revisionPopup').style.display = 'none';
+}
+
+// Load Proofs Automatically
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('pendingGrid')) {
+    loadProofs();
+  }
+});
+
