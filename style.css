@@ -83,6 +83,28 @@ section.features {
   text-align: center;
 }
 
+/* Feature images (Homepage only) */
+.feature img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, opacity 1s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.feature img.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature img:hover {
+  transform: scale(1.03);
+}
+
 /* Store Page */
 .store-item {
   text-align: center;
@@ -163,37 +185,6 @@ section.features {
   background-color: #d9483a;
 }
 
-/* Footer */
-footer {
-  background: #f25c54;
-  color: white;
-  text-align: center;
-  padding: 2rem 1rem;
-  margin-top: 4rem;
-}
-
-/* Popup */
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  max-width: 400px;
-  background: #fff;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 1001;
-}
-
-/* Buttons General */
-button {
-  font-family: inherit;
-  font-size: 1rem;
-}
-
 /* Contact Page */
 .contact-page {
   max-width: 600px;
@@ -238,3 +229,33 @@ button {
   background-color: #d9483a;
 }
 
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+
+/* Footer */
+footer {
+  background: #f25c54;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+}
+
+/* Buttons Global */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+}
