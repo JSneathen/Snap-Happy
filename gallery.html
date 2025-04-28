@@ -14,16 +14,29 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="store.html">Store</a></li>
       <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <main id="gallery" class="gallery"></main>
 
+  <!-- Retouch & Print Request Popup -->
   <div id="retouchPopup" class="popup" style="display:none;">
-    <h3>Retouch Request</h3>
+    <h3>Order a Print or Request a Retouch</h3>
+    <img id="popupImage" src="" alt="Selected" style="width: 100%; max-width: 300px; margin: 1rem 0;">
+    <label for="printSize">Select Print Size:</label>
+    <select id="printSize">
+      <option value="4x6">4x6</option>
+      <option value="5x7">5x7</option>
+      <option value="8x10">8x10</option>
+      <option value="11x14">11x14</option>
+      <option value="16x20">16x20</option>
+    </select><br><br>
+    <button onclick="orderPrint()">Order Print</button>
+    <hr>
     <textarea id="retouchDescription" placeholder="Describe your retouch needs..."></textarea><br><br>
-    <button onclick="submitRetouch()">Submit</button>
+    <button onclick="submitRetouch()">Submit Retouch Request</button>
     <button onclick="closePopup()">Cancel</button>
   </div>
 
@@ -32,3 +45,4 @@
   </footer>
 </body>
 </html>
+
