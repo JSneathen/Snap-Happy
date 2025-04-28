@@ -1,4 +1,4 @@
-// --- Existing Chat Toggle ---
+// --- Chat Toggle (for site-wide live chat bubble) ---
 function toggleChat() {
   const chatBox = document.getElementById('chatBox');
   if (chatBox) {
@@ -6,11 +6,11 @@ function toggleChat() {
   }
 }
 
-// --- Fake Login Script ---
+// --- Login Page Script ---
 function setupLogin() {
   const loginForm = document.getElementById('loginForm');
   if (loginForm) {
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -25,32 +25,51 @@ function setupLogin() {
   }
 }
 
-// --- Store Cart Handling ---
+// --- Cart Handling for Store and Prints ---
 let cart = [];
 
 function addToCart(item) {
   cart.push(item);
-  document.getElementById('cartItems').innerHTML = cart.map(i => '<li>' + i + '</li>').join('');
-  document.getElementById('cartPopup').style.display = 'block';
+  alert('Item added to cart! 🛒');
 }
 
 function checkoutCart() {
-  alert('Thank you for your purchase! 🛒');
+  alert('Thank you for your purchase! 🛍️');
   cart = [];
   closeCart();
 }
 
 function closeCart() {
-  document.getElementById('cartPopup').style.display = 'none';
+  const cartPopup = document.getElementById('cartPopup');
+  if (cartPopup) {
+    cartPopup.style.display = 'none';
+  }
 }
 
-// --- Retouch Request Popup ---
+// --- Retouch & Print Request Handling ---
 function openRetouchRequest(imageSrc) {
-  document.getElementById('retouchPopup').style.display = 'block';
+  const popupImage = document.getElementById('popupImage');
+  if (popupImage) {
+    popupImage.src = imageSrc;
+  }
+  const retouchPopup = document.getElementById('retouchPopup');
+  if (retouchPopup) {
+    retouchPopup.style.display = 'block';
+  }
 }
 
 function closePopup() {
-  document.getElementById('retouchPopup').style.display = 'none';
+  const retouchPopup = document.getElementById('retouchPopup');
+  if (retouchPopup) {
+    retouchPopup.style.display = 'none';
+  }
+}
+
+function orderPrint() {
+  const size = document.getElementById('printSize').value;
+  cart.push(`Ordered print (${size})`);
+  alert(`Print (${size}) added to cart! 📸`);
+  closePopup();
 }
 
 function submitRetouch() {
@@ -63,14 +82,14 @@ function submitRetouch() {
   }
 }
 
-// --- Gallery Randomized Display from Internet ---
+// --- Gallery Randomized Display from Internet (Picsum Photos) ---
 function setupGallery() {
   const gallery = document.getElementById('gallery');
   if (gallery) {
     for (let i = 0; i < 8; i++) {
       const img = document.createElement('img');
       img.src = `https://picsum.photos/400/300?random=${Math.floor(Math.random() * 1000)}`;
-      img.alt = "Random Photo";
+      img.alt = "Gallery Photo";
       img.onclick = () => openRetouchRequest(img.src);
       img.className = 'gallery-photo';
       gallery.appendChild(img);
@@ -80,7 +99,6 @@ function setupGallery() {
 
 // --- Master Setup on Page Load ---
 document.addEventListener('DOMContentLoaded', () => {
-  // Setup all page features
   const chatBubble = document.querySelector('.chat-bubble');
   const closeBtn = document.querySelector('.close-btn');
 
