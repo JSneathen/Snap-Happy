@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Snap Happy Photo Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .editor { text-align: center; padding: 2rem; }
+    canvas { margin-top: 1rem; border: 2px solid #ccc; max-width: 90%; }
+    .filters { margin: 1rem 0; }
+    .filters button, .filters input[type=range] { margin: 0.5rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Snap Happy</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="editor">
+    <h1>Snap Happy Photo Editor</h1>
+    <input type="file" id="upload" accept="image/*"><br>
+    <div class="filters">
+      <button onclick="applyFilter('grayscale(100%)')">Grayscale</button>
+      <button onclick="applyFilter('sepia(100%)')">Sepia</button>
+      <label>Brightness <input type="range" min="50" max="150" value="100" id="brightnessSlider"></label>
+      <label>Blur <input type="range" min="0" max="10" value="0" id="blurSlider"></label>
+      <button onclick="resetFilters()">Reset</button>
+    </div>
+    <canvas id="canvas"></canvas><br>
+    <button onclick="downloadImage()">Download Edited Image</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Snap Happy Photography. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    let img = new Image();
+    let currentFilter = '';
+
+    upload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        img.onload = function() {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0);
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    });
+
+    function applyFilter(filter) {
+      currentFilter = filter;
+      redrawImage();
+    }
+
+    document.getElementById('brightnessSlider').addEventListener('input', function() {
+      const brightness = this.value;
+      updateCombinedFilter();
+    });
+
+    document.getElementById('blurSlider').addEventListener('input', function() {
+      updateCombinedFilter();
+    });
+
+    function updateCombinedFilter() {
+      const brightness = document.getElementById('brightnessSlider').value;
+      const blur = document.getElementById('blurSlider').value;
+      ctx.filter = `${currentFilter} brightness(${brightness}%) blur(${blur}px)`;
+      redrawImage();
+    }
+
+    function resetFilters() {
+      currentFilter = '';
+      document.getElementById('brightnessSlider').value = 100;
+      document.getElementById('blurSlider').value = 0;
+      ctx.filter = 'none';
+      redrawImage();
+    }
+
+    function redrawImage() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+    }
+
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.download = 'edited-photo.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+  </script>
+</body>
+</html>
