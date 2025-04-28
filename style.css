@@ -115,6 +115,7 @@ section.features {
 /* Gallery Photos */
 .gallery-photo {
   width: 100%;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
   margin-bottom: 1rem;
