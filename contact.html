@@ -3,27 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Snap Happy Photography</title>
+  <title>Contact - Snap Happy Photography</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
+
   <nav>
     <div class="logo">Snap Happy</div>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="login.html">Login</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="proofing.html">Proofing</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <main style="padding:4rem 2rem; max-width:600px; margin:auto;">
+  <main class="contact-page">
     <h1>Contact Us</h1>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
+    <p>We would love to hear from you! Feel free to reach out using the form below or through our contact details.</p>
+
+    <div class="contact-info">
+      <p><strong>Email:</strong> Management@SnapHappy.com</p>
+      <p><strong>Phone:</strong> 555-555-5555</p>
+    </div>
+
+    <form class="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Your Name">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Your Email">
+
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Your Message..."></textarea>
+
       <button type="submit">Send Message</button>
     </form>
   </main>
@@ -32,24 +48,5 @@
     <p>&copy; 2025 Snap Happy Photography. All rights reserved.</p>
   </footer>
 
-<div class="chat-bubble">💬 Chat</div>
-
-<div class="chat-box" id="chatBox">
-  <div class="chat-header">
-    Snap Happy Chat
-    <span class="close-btn">&times;</span>
-  </div>
-  <div class="chat-messages">
-    <p><strong>Agent:</strong> Hi there! How can I help you today?</p>
-  </div>
-  <div class="chat-input">
-    <input type="text" placeholder="Type your message...">
-    <button>Send</button>
-  </div>
-</div>
-
-
-  <script src="script.js"></script>
 </body>
 </html>
-
