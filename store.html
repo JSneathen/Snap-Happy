@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store - Snap Happy Photography</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">Snap Happy</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="store">
+    <h1>Snap Happy Store</h1>
+    <div class="store-item">
+      <h3>50GB Cloud Storage</h3>
+      <p>$2.99/month</p>
+      <button onclick="addToCart('50GB Cloud Storage - $2.99/month')">Add to Cart</button>
+    </div>
+    <div class="store-item">
+      <h3>Photo Prints (4x6, 5x7)</h3>
+      <p>$0.49 each</p>
+      <button onclick="addToCart('Photo Prints - $0.49 each')">Add to Cart</button>
+    </div>
+    <div class="store-item">
+      <h3>Premium Retouch Package</h3>
+      <p>$14.99 one-time</p>
+      <button onclick="addToCart('Premium Retouch Package - $14.99')">Add to Cart</button>
+    </div>
+  </main>
+
+  <div id="cartPopup" class="popup" style="display:none;">
+    <h3>Items in Cart:</h3>
+    <ul id="cartItems"></ul>
+    <button onclick="checkoutCart()">Checkout</button>
+    <button onclick="closeCart()">Close</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Snap Happy Photography. All rights reserved.</p>
+  </footer>
+</body>
+</html>

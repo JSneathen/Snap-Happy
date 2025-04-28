@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Snap Happy Photography</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <nav>
+    <div class="logo">Snap Happy</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="gallery" class="gallery"></main>
+
+  <div id="retouchPopup" class="popup" style="display:none;">
+    <h3>Retouch Request</h3>
+    <textarea id="retouchDescription" placeholder="Describe your retouch needs..."></textarea><br><br>
+    <button onclick="submitRetouch()">Submit</button>
+    <button onclick="closePopup()">Cancel</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Snap Happy Photography. All rights reserved.</p>
+  </footer>
+</body>
+</html>
