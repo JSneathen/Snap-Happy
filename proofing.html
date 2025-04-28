@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Proofing Portal - Snap Happy Photography</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Snap Happy</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="proofing.html">Proofing</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="proofing">
+    <h1>Client Proofing Portal</h1>
+
+    <section id="pendingProofs">
+      <h2>Pending Proofs</h2>
+      <div class="proof-grid" id="pendingGrid"></div>
+    </section>
+
+    <section id="approvedProofs">
+      <h2>Approved Proofs</h2>
+      <div class="proof-grid" id="approvedGrid"></div>
+    </section>
+
+    <section id="revisionProofs">
+      <h2>Revision Requested</h2>
+      <div class="proof-grid" id="revisionGrid"></div>
+    </section>
+
+  </main>
+
+  <div id="revisionPopup" class="popup" style="display:none;">
+    <h3>Request a Revision</h3>
+    <textarea id="revisionText" placeholder="Describe what you want changed..."></textarea><br><br>
+    <button onclick="submitRevision()">Submit Revision</button>
+    <button onclick="closeRevisionPopup()">Cancel</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Snap Happy Photography. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
