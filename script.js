@@ -191,3 +191,22 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// Fade-in on Scroll for Features
+document.addEventListener('DOMContentLoaded', () => {
+  const featureImgs = document.querySelectorAll('.feature img');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  featureImgs.forEach(img => {
+    observer.observe(img);
+  });
+});
+
+
